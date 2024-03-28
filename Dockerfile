@@ -8,6 +8,7 @@ COPY package*.json .
 RUN npm ci
 
 COPY --chown=node:node . .
+RUN echo $KOYEB_APP_NAME
 RUN npm run build && npm prune --omit=dev
 
 
