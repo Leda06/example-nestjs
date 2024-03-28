@@ -11,7 +11,7 @@ COPY --chown=node:node . .
 RUN npm run build && npm prune --omit=dev
 
 RUN echo "test"
-RUN echo $KOYEB_GIT_SHA
+RUN echo $KOYEB_GIT_BRANCH
 # Final run stage
 FROM node:lts-alpine
 
