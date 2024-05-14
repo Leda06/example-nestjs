@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 
+const envToDisplay = process.env.ENV_TO_DISPLAY || 'nada' ;
+
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'Hello World!';
+    return 'Hello World! This is the env to display ' + envToDisplay;
   }
 }
