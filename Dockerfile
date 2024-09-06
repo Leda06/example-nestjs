@@ -1,7 +1,7 @@
 # Build stage
 FROM node:lts-alpine AS builder
 
-USER root
+USER node
 WORKDIR /home/node
 
 COPY package*.json .
@@ -18,7 +18,9 @@ RUN echo $KOYEB_GIT_SHA
 FROM node:lts-alpine
 
 ENV NODE_ENV production
-USER root
+RUN chmod 1000:1000 /data
+
+USER node
 WORKDIR /home/node
 
 COPY --from=builder --chown=node:node /home/node/package*.json .
