@@ -10,10 +10,6 @@ RUN npm ci
 COPY --chown=root:root . .
 RUN npm run build && npm prune --omit=dev
 
-RUN echo "test"
-
-RUN echo $KOYEB_GIT_SHA
-
 # Final run stage
 FROM node:lts-alpine
 
