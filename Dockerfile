@@ -1,13 +1,13 @@
 # Build stage
 FROM node:lts-alpine AS builder
 
-USER node
+USER root
 WORKDIR /home/node
 
 COPY package*.json .
 RUN npm ci
 
-COPY --chown=node:node . .
+COPY --chown=root:root . .
 RUN npm run build && npm prune --omit=dev
 
 RUN echo "test"
@@ -18,14 +18,13 @@ RUN echo $KOYEB_GIT_SHA
 FROM node:lts-alpine
 
 ENV NODE_ENV production
-RUN chmod 1000:1000 /data
 
-USER node
+USER root
 WORKDIR /home/node
 
-COPY --from=builder --chown=node:node /home/node/package*.json .
-COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules
-COPY --from=builder --chown=node:node /home/node/dist/ ./dist
+COPY --from=builder --chown=root:root /home/node/package*.json .
+COPY --from=builder --chown=root:root /home/node/node_modules/ ./node_modules
+COPY --from=builder --chown=root:root /home/node/dist/ ./dist
 
 ARG PORT
 EXPOSE ${PORT:-3000}
