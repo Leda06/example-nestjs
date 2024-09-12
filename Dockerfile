@@ -11,7 +11,7 @@ COPY --chown=root:root . .
 RUN npm run build && npm prune --omit=dev
 
 # Final run stage
-FROM node:lts-alpine
+FROM node:lts-alpine AS runner
 
 ARG KOYEB_GIT_SHA
 ENV gitsha=${KOYEB_GIT_SHA}
