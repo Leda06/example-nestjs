@@ -13,9 +13,13 @@ RUN npm run build && npm prune --omit=dev
 # Final run stage
 FROM node:lts-alpine
 
+ARG KOYEB_GIT_SHA
 ENV gitsha=${KOYEB_GIT_SHA}
 RUN echo 'gitsha'
 RUN echo ${gitsha}
+
+RUN echo 'KOYEB_GIT_SHA'
+RUN echo ${KOYEB_GIT_SHA}
 
 ENV NODE_ENV production
 
