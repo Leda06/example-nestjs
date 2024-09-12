@@ -15,7 +15,8 @@ FROM node:lts-alpine
 
 ARG KOYEB_GIT_SHA
 ENV gitsha=${KOYEB_GIT_SHA}
-echo gitsha
+RUN echo 'gitsha'
+RUN echo ${gitsha}
 
 ENV NODE_ENV production
 
