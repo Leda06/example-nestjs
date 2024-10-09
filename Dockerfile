@@ -9,7 +9,7 @@ RUN npm ci
 
 ARG TEST
 RUN echo 'TEST'
-RUN echo '${TEST}'
+RUN echo "${TEST}"
 
 COPY --chown=root:root . .
 RUN npm run build && npm prune --omit=dev
