@@ -31,4 +31,4 @@ COPY --from=builder --chown=root:root /home/node/node_modules/ ./node_modules
 COPY --from=builder --chown=root:root /home/node/dist/ ./dist
 
 ARG PORT
-EXPOSE 3000
+EXPOSE 8000
