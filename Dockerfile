@@ -30,5 +30,5 @@ COPY --from=builder --chown=root:root /home/node/package*.json .
 COPY --from=builder --chown=root:root /home/node/node_modules/ ./node_modules
 COPY --from=builder --chown=root:root /home/node/dist/ ./dist
 
-ENV PORT 8000
 EXPOSE 8000
+ENV PORT 8000
