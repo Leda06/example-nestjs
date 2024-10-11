@@ -22,6 +22,10 @@ ENV NODE_ENV production
 USER root
 WORKDIR /home/node
 
+ARG TEST
+RUN echo 'TEST'
+RUN echo $TEST
+
 COPY --from=builder --chown=root:root /home/node/package*.json .
 COPY --from=builder --chown=root:root /home/node/node_modules/ ./node_modules
 COPY --from=builder --chown=root:root /home/node/dist/ ./dist
