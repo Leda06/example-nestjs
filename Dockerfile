@@ -24,3 +24,5 @@ COPY --from=builder --chown=root:root /home/node/dist/ ./dist
 
 ARG PORT
 EXPOSE ${PORT:-3000}
+
+CMD ["node", "dist/main.js"]
