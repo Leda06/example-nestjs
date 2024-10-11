@@ -7,6 +7,12 @@ WORKDIR /home/node
 COPY package*.json .
 RUN npm ci
 
+ARG TEST
+RUN echo ${TEST}
+
+ARG INTER
+RUN echo ${INTER}
+
 COPY --chown=root:root . .
 RUN npm run build && npm prune --omit=dev
 
