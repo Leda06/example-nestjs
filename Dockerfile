@@ -7,10 +7,10 @@ WORKDIR /home/node
 COPY package*.json .
 RUN npm ci
 
-ARG TEST
+ENV TEST
 RUN echo ${TEST}
 
-ARG INTER
+ENV INTER
 RUN echo ${INTER}
 
 COPY --chown=root:root . .
