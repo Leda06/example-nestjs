@@ -4,6 +4,8 @@ FROM node:lts-alpine AS builder
 USER root
 WORKDIR /home/node
 
+ARG TEST
+
 COPY package*.json .
 RUN npm ci
 
